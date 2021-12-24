@@ -1,5 +1,11 @@
 {
   "rewrites":  [
     {"source": "/(.*)", "destination": "/"}
+  ],
+  "redirects": [
+    { "source": "/wiki", 
+      "destination": "https://thechonkxxx.gitbook.io/chonk.fi-whitepaper-and-wiki/",
+      "permanent": true
+    }
   ]
 }
