@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.e6c13ad2.css",
-    "main.js": "/static/js/main.869f135f.js",
+    "main.css": "/static/css/main.4efb37a3.css",
+    "main.js": "/static/js/main.7afbcca8.js",
     "static/media/chonk-sleep.svg": "/static/media/chonk-sleep.546eb379776a5213765135f76f11cd3c.svg",
     "static/media/logoWithText.svg": "/static/media/logoWithText.b79646073786421dba173d0c45f32127.svg",
     "static/media/bsc-scan.svg": "/static/media/bsc-scan.3073eaba7ae0c8a8ec3f18f0872280e5.svg",
@@ -9,12 +9,10 @@
     "static/media/discord.svg": "/static/media/discord.54aa45172a152b4a614ef5ec88ecbecb.svg",
     "index.html": "/index.html",
     "static/media/home.svg": "/static/media/home.6fc85b83186276d4a582b9727e82fec1.svg",
-    "static/media/copy.svg": "/static/media/copy.70246d0e21dde3fd95833d867dc5e49e.svg",
-    "main.e6c13ad2.css.map": "/static/css/main.e6c13ad2.css.map",
-    "main.869f135f.js.map": "/static/js/main.869f135f.js.map"
+    "static/media/copy.svg": "/static/media/copy.70246d0e21dde3fd95833d867dc5e49e.svg"
   },
   "entrypoints": [
-    "static/css/main.e6c13ad2.css",
-    "static/js/main.869f135f.js"
+    "static/css/main.4efb37a3.css",
+    "static/js/main.7afbcca8.js"
   ]
 }
