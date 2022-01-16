@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.4efb37a3.css",
-    "main.js": "/static/js/main.f235f86d.js",
+    "main.js": "/static/js/main.d9a76ad7.js",
     "static/media/chonk-sleep.svg": "/static/media/chonk-sleep.546eb379776a5213765135f76f11cd3c.svg",
     "static/media/logoWithText.svg": "/static/media/logoWithText.b79646073786421dba173d0c45f32127.svg",
     "static/media/bsc-scan.svg": "/static/media/bsc-scan.3073eaba7ae0c8a8ec3f18f0872280e5.svg",
@@ -13,6 +13,6 @@
   },
   "entrypoints": [
     "static/css/main.4efb37a3.css",
-    "static/js/main.f235f86d.js"
+    "static/js/main.d9a76ad7.js"
   ]
 }
