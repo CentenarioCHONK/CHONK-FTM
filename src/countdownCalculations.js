@@ -16,9 +16,10 @@ const whitelistSpots = {
   'stageTwo': [
     '0x6c93e995f9AaB014B908bb87BCd3268a135e53E0',
     '0xff909dde7fC5dDe0aE06E42ea1aFaeA8904DDC68',
+    '0x0c30ccDAB056A4e743E1d2FAdef1398f1244B82a'
   ],
   'stageThree': [
-    '0x1E1C34D385375A66162c792346D65eC0B5024a0a ',
+    '0x1E1C34D385375A66162c792346D65eC0B5024a0a',
   ]
 }
 
