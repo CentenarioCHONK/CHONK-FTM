@@ -125,7 +125,7 @@ export default function Exchange() {
 
 
     return (
-      <Page> {true ?
+      <Page> {isCountdownDone(account) ?
           <Grid container spacing={0} justifyContent="center" style={{maxWidth: "950px", paddingTop: "25px", paddingBottom: "25px"}}>
               <Grid item xs={12} sm={7} md={6}>
                   <Card>
