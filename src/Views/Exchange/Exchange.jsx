@@ -179,11 +179,13 @@ export default function Exchange() {
                   </Card>
               </Grid>
               <Grid item xs={12} sm={7} md={12}>
-                  <RefSelection
-                    checked={reflinkSelection}
-                    showAllOptions={cookies.Refaddress !== undefined}
-                    handleChange={handleChange}
-                  />
+                  <Card style={{padding: "5px"}}>
+                      <RefSelection
+                        checked={reflinkSelection}
+                        showAllOptions={cookies.Refaddress !== undefined}
+                        handleChange={handleChange}
+                      />
+                  </Card>
               </Grid>
           </Grid>
       </Page>
