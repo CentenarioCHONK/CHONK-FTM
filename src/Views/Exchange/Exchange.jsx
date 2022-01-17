@@ -24,7 +24,6 @@ import { useLocation } from "react-router-dom";
 import { useCookies } from "react-cookie";
 import { addressRegex, cookieExpirationDate } from "../../vipReflinks";
 import { abi } from "../../SmartContract/abi";
-import { getTimeRemaining, isCountdownDone } from "../../countdownCalculations";
 import Text from "../../Components/Text";
 import { ReactComponent as LazyChonk } from "../../images/chonk-sleep.svg";
 
@@ -46,13 +45,6 @@ export default function Exchange() {
     const { buyState, sendBuyTx } = useBuyChonk();
     const { reinvestState, sendReinvestTx } = useReinvest();
     const { withdrawState, sendWithdrawTx } = useWithdraw();
-
-    const [countdown, setCountdown] = useState(getTimeRemaining());
-
-    useEffect(() => {
-        const timer = !isCountdownDone(account) && setInterval(() => setCountdown(getTimeRemaining()), 1000);
-        return() => clearInterval(timer);
-    }, [account]);
 
     useEffect(() => {
         const getData = async () => {
@@ -125,7 +117,7 @@ export default function Exchange() {
 
 
     return (
-      <Page> {isCountdownDone(account) ?
+      <Page>
           <Grid container spacing={0} justifyContent="center" style={{maxWidth: "950px", paddingTop: "25px", paddingBottom: "25px"}}>
               <Grid item xs={12} sm={7} md={6}>
                   <Card>
@@ -197,14 +189,7 @@ export default function Exchange() {
                       />
                   </Card>
               </Grid>
-          </Grid>:
-        <Stack spacing={-2} style={{paddingTop:"50px", alignItems: "center"}}>
-            <LazyChonk style={{width: "50%"}}/>
-            <br/><br/><br/>
-            <Text fontSize="75" >{'Official launch in'}</Text>
-            <Text fontSize="100">{countdown}</Text>
-            <Text fontSize="35" style={{color: "grey"}}>{'17 January 2022 22:00'} UTC</Text>
-        </Stack>}
+          </Grid>
       </Page>
     );
 };
