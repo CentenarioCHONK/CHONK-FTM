@@ -27,7 +27,7 @@ export default function RefSelection({checked, handleChange, showAllOptions}) {
                     <Referal name="Origin Referral" value="two" checked={checked === "two"} onChange={handleChange}/>
                 </Grid> : null}
                 <Grid item xs={showAllOptions === true ? 12 : 6} md={showAllOptions === true ? 4 : 6}>
-                    <Referal name="Support CHONK" value="three" checked={checked === "three"} onChange={handleChange}/>
+                    <Referal name="Support CHONK" value="four" checked={checked === "four"} onChange={handleChange}/>
                 </Grid>
             </Grid>
         </Card>

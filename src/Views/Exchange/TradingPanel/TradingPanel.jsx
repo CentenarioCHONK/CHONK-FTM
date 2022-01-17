@@ -35,9 +35,9 @@ export default function TradingPanel({
                     </Stack>
                     {
                     isBuyPanel ? 
-                    <Button success disabled={disabled} onClick={handleApprove} style={{width: "81px"}}>Spend</Button> 
+                    <Button success disabled={disabled} onClick={handleApprove} style={{width: "81px", cursor: "pointer"}}>Spend</Button>
                     :
-                    <Button danger disabled={disabled} onClick={handleApprove} style={{width: "81px"}}>Sell</Button>
+                    <Button danger disabled={disabled} onClick={handleApprove} style={{width: "81px", cursor: "pointer"}}>Sell</Button>
                     }
                 </Stack>
                 <Stack direction="row" justifyContent="space-between">

@@ -23,5 +23,6 @@ export default {
     button: {
         width: "150px",
         maxWidth: "150px",
+        cursor: "pointer"
     }
 }

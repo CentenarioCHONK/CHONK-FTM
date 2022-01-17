@@ -48,7 +48,7 @@ export default function Home() {
                   <Stack spacing={4} style={{width: "50%", lineHeight: 1.1}}>
                       <Text fontSize="64" bold style={{color: "#5977d1"}}>Finance is made of lazy chonks.</Text>
                       <Text fontSize="20" bold style={{zIndex: 1, color: "#F4EEFF"}}>Earn FTM while being lazy.</Text>
-                      <Button style={{zIndex: 1, width: "150px", height: "50px"}} onClick={() => navigate("/swap")}>Launch App</Button>
+                      <Button style={{zIndex: 1, width: "150px", height: "50px", cursor: "pointer"}} onClick={() => navigate("/swap")}>Launch App</Button>
                   </Stack>
                   <LazyChonk style={{zIndex: 1, width: "50%"}}/>
               </Stack>

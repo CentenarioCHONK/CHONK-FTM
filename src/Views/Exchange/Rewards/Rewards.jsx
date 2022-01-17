@@ -10,8 +10,8 @@ export default function Rewards({disabled, rewards, rewardsInUsd, onReinvest, on
                 <Text bold fontSize="20" style={{color:"#d8e6fe"}}>Rewards</Text>
                 <Text><Text highlighted>{rewards}</Text> FTM (~ <Text highlighted>{rewardsInUsd}</Text> USD)</Text>
                 <Stack direction="row" justifyContent="space-between">
-                    <Button success disabled={disabled} onClick={onReinvest}>Reinvest</Button>
-                    <Button danger disabled={disabled} onClick={onClaim}>Claim</Button>
+                    <Button success disabled={disabled} onClick={onReinvest} style={{cursor: "pointer"}}>Reinvest</Button>
+                    <Button danger disabled={disabled} onClick={onClaim} style={{cursor: "pointer"}}>Claim</Button>
                 </Stack>
             </Stack>
         </Card>

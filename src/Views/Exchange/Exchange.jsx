@@ -4,7 +4,7 @@ import Rewards from "./Rewards/Rewards";
 import MyHoldings from "./MyHoldings/MyHoldings";
 import TradingPanel from "./TradingPanel/TradingPanel";
 import RefSelection from "./RefSelection/RefSelection";
-import { Grid } from "@mui/material";
+import { Grid, Stack } from "@mui/material";
 import Card from "../../Components/Card";
 import { useEthers, useEtherBalance, useTokenBalance } from "@usedapp/core";
 import { formatEther, formatUnits } from '@ethersproject/units'
@@ -23,7 +23,10 @@ import { useCoingeckoPrice } from '@usedapp/coingecko'
 import { useLocation } from "react-router-dom";
 import { useCookies } from "react-cookie";
 import { addressRegex, cookieExpirationDate } from "../../vipReflinks";
-import { abi } from "../../SmartContract/abi"
+import { abi } from "../../SmartContract/abi";
+import { getTimeRemaining, isCountdownDone } from "../../countdownCalculations";
+import Text from "../../Components/Text";
+import { ReactComponent as LazyChonk } from "../../images/chonk-sleep.svg";
 
 export default function Exchange() {
     const [location] = useState(useLocation());
@@ -43,6 +46,13 @@ export default function Exchange() {
     const { buyState, sendBuyTx } = useBuyChonk();
     const { reinvestState, sendReinvestTx } = useReinvest();
     const { withdrawState, sendWithdrawTx } = useWithdraw();
+
+    const [countdown, setCountdown] = useState(getTimeRemaining());
+
+    useEffect(() => {
+        const timer = !isCountdownDone(account) && setInterval(() => setCountdown(getTimeRemaining()), 1000);
+        return() => clearInterval(timer);
+    }, [account]);
 
     useEffect(() => {
         const getData = async () => {
@@ -70,7 +80,7 @@ export default function Exchange() {
             setReflinkSelection("two");
         }
         if (cookies.Refselection === undefined) {
-            handleChange("three");
+            handleChange("four");
         }
     }, [location, cookies, setCookie, setReflinkSelection, handleChange]);
 
@@ -80,7 +90,7 @@ export default function Exchange() {
             case "two":
                 ref = cookies.Refaddress;
                 break;
-            case "three":
+            case "four":
                 ref = '0x0c30ccDAB056A4e743E1d2FAdef1398f1244B82a'; // CHONK ADDRESS
                 break;
             default:
@@ -115,7 +125,7 @@ export default function Exchange() {
 
 
     return (
-      <Page>
+      <Page> {true ?
           <Grid container spacing={0} justifyContent="center" style={{maxWidth: "950px", paddingTop: "25px", paddingBottom: "25px"}}>
               <Grid item xs={12} sm={7} md={6}>
                   <Card>
@@ -144,7 +154,7 @@ export default function Exchange() {
                                 balance={chonkBalance ? Number(formatUnits(chonkBalance, 18)).toFixed(2) : 0}
                                 currency="CHONK"
                                 secondaryCurrency="FTM"
-                                valueUSD={sellPrice ? Number((Number(sellAmount)*Number(formatEther(sellPrice))).toString()*EtherPriceUSD).toFixed(4) : "0"}
+                                valueUSD={sellPrice ? Number((Number()*Number(sellAmount * formatEther(sellPrice))).toFixed(0)*EtherPriceUSD) : "0"}
                                 onChange={(value) => setSellAmount(value)}
                                 onMax={() => setSellAmount(formatUnits(chonkBalance, 18))}
                                 value={sellAmount}
@@ -187,7 +197,14 @@ export default function Exchange() {
                       />
                   </Card>
               </Grid>
-          </Grid>
+          </Grid>:
+        <Stack spacing={-2} style={{paddingTop:"50px", alignItems: "center"}}>
+            <LazyChonk style={{width: "50%"}}/>
+            <br/><br/><br/>
+            <Text fontSize="75" >{'Official launch in'}</Text>
+            <Text fontSize="100">{countdown}</Text>
+            <Text fontSize="35" style={{color: "grey"}}>{'17 January 2022 22:00'} UTC</Text>
+        </Stack>}
       </Page>
     );
 };
