@@ -4,7 +4,7 @@ import Rewards from "./Rewards/Rewards";
 import MyHoldings from "./MyHoldings/MyHoldings";
 import TradingPanel from "./TradingPanel/TradingPanel";
 import RefSelection from "./RefSelection/RefSelection";
-import { Grid, Stack } from "@mui/material";
+import { Grid } from "@mui/material";
 import Card from "../../Components/Card";
 import { useEthers, useEtherBalance, useTokenBalance } from "@usedapp/core";
 import { formatEther, formatUnits } from '@ethersproject/units'
@@ -16,7 +16,7 @@ import {
     useReinvest,
     useSellChonk,
     useSellPrice,
-    useTvl,
+    useTotalSupply,
     useWithdraw
 } from '../../SmartContract/interaction';
 import { useCoingeckoPrice } from '@usedapp/coingecko'
@@ -24,8 +24,6 @@ import { useLocation } from "react-router-dom";
 import { useCookies } from "react-cookie";
 import { addressRegex, cookieExpirationDate } from "../../vipReflinks";
 import { abi } from "../../SmartContract/abi";
-import Text from "../../Components/Text";
-import { ReactComponent as LazyChonk } from "../../images/chonk-sleep.svg";
 
 export default function Exchange() {
     const [location] = useState(useLocation());
@@ -39,7 +37,7 @@ export default function Exchange() {
     const chonkBalance = useTokenBalance(smartContractAddress, account);
     const buyPrice = useBuyPrice();
     const sellPrice = useSellPrice();
-    const tvl = useTvl();
+    const totalSupply = useTotalSupply()
     const EtherPriceUSD = useCoingeckoPrice('fantom', 'usd')
     const { sellstate, sendSellTx } = useSellChonk();
     const { buyState, sendBuyTx } = useBuyChonk();
@@ -104,17 +102,15 @@ export default function Exchange() {
     }
 
     const getShareOfPool = () => {
-        if (chonkBalance && sellPrice && tvl) {
+        if (chonkBalance && totalSupply) {
             if (Number(formatUnits(chonkBalance, 18)) > 0) {
                 const cBalance = (Number(formatUnits(chonkBalance, 18)))
-                const sPrice = Number(formatEther(sellPrice))
-                const t = Number(formatEther(tvl))
-                return (cBalance * sPrice/t * 100).toFixed(2)
+                const total = Number(formatEther(totalSupply))
+                return ((cBalance/total) * 100).toFixed(2)
             }
         }
         return "0"
     }
-
 
     return (
       <Page>

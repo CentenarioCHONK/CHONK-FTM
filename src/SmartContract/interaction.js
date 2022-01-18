@@ -14,7 +14,6 @@ export function useMyDividends(includeReferralBonus) {
 }
 
 export function useCalculateBnbReceived(tokensToSell) {
-    console.log(tokensToSell);
     const [bnb] = useContractCall({
           abi: chonkInterface,
           address: smartContractAddress,
@@ -26,7 +25,6 @@ export function useCalculateBnbReceived(tokensToSell) {
 }
 
 export function useCalculateTokensReceived(bnbToSpend) {
-    console.log(bnbToSpend);
     const [tokens] = useContractCall({
           abi: chonkInterface,
           address: smartContractAddress,
@@ -75,6 +73,16 @@ export function useSellPrice() {
         args: [],
     }) ?? [];
     return count;
+}
+
+export function useTotalSupply() {
+  const [totalSupply] = useContractCall({
+    abi: chonkInterface,
+    address: smartContractAddress,
+    method: "totalSupply",
+    args: [],
+  }) ?? [];
+  return totalSupply;
 }
 
 export function useBuyChonk() {
